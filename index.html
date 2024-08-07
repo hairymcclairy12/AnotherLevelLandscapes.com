@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscape Development</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #005f6a;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00a79d;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .landscape-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #005f6a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-form, .about-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .contact-form h2, .about-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .contact-form label {
+            margin: 15px 0 5px;
+            font-weight: 700;
+        }
+
+        .contact-form input, .contact-form textarea, .contact-form button {
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #999;
+        }
+
+        .contact-form button {
+            background-color: #005f6a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s;
+            padding: 15px;
+            font-size: 1.1em;
+        }
+
+        .contact-form button:hover {
+            background-color: #00a79d;
+        }
+
+        .about-section p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        .thank-you-message {
+            display: none;
+            background: #e0f7fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .thank-you-message h2 {
+            color: #00796b;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Landscape Development</h1>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('services')">Services</a></li>
+                <li><a onclick="showSection('projects')">Projects</a></li>
+                <li><a onclick="showSection('about')">About</a></li>
+                <li><a onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="section active">
+            <h2>Welcome to Landscape Development</h2>
+            <img src="images/featured-landscape.jpg" alt="Beautiful Landscape" class="landscape-image">
+            <p>Transforming outdoor spaces into beautiful, functional landscapes. Our expert team provides top-notch landscape development services to bring your vision to life.</p>
+        </section>
+        <section id="services" class="section">
+            <h2>Our Services</h2>
+            <div class="about-section">
+                <p>We offer a comprehensive range of landscape development services, including:</p>
+                <ul>
+                    <li>Garden Design and Planning</li>
+                    <li>Hardscaping (patios, walkways, retaining walls)</li>
+                    <li>Planting and Irrigation Systems</li>
+                    <li>Landscape Lighting</li>
+                    <li>Maintenance and Upkeep</li>
+                </ul>
+            </div>
+        </section>
+        <section id="projects" class="section">
+            <h2>Our Projects</h2>
+            <div class="gallery">
+                <img src="images/project1.jpg" alt="Project 1">
+                <img src="images/project2.jpg" alt="Project 2">
+                <img src="images/project3.jpg" alt="Project 3">
+                <img src="images/project4.jpg" alt="Project 4">
+                <img src="images/project5.jpg" alt="Project 5">
+                <img src="images/project6.jpg" alt="Project 6">
+                <img src="images/project7.jpg" alt="Project 7">
+            </div>
+        </section>
+        <section id="about" class="section">
+            <div class="about-section">
+                <h2>About Us</h2>
+                <p>At Landscape Development, we are dedicated to creating stunning and practical outdoor spaces. Our team combines creativity, expertise, and attention to detail to deliver exceptional results tailored to your needs and preferences.</p>
+            </div>
+        </section>
+        <section id="contact" class="section">
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <form id="contactForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Your email address" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div id="thankYouMessage" class="thank-you-message">
+                    <h2>Thank You!</h2>
+                    <p>Thank you for reaching out to ALL Another Level Landscape Services. We appreciate your interest and will get back to you shortly.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Landscape Development</p>
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(20px)';
+            });
+            const activeSection = document.getElementById(sectionId);
+            activeSection.classList.add('active');
+            setTimeout(() => {
+                activeSection.style.opacity = 1;
+                activeSection.style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            document.getElementById('contactForm').reset(); // Reset form fields
+            document.getElementById('thankYouMessage').style.display = 'block'; // Show thank you message
+        });
+    </script>
+</body>
+</html>
